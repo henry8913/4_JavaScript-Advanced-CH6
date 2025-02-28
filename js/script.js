@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // PRODUCT LOADING AND DISPLAY
 // ======================================================
 const productList = document.getElementById('product-list');
-const initialProductsToShow = 15;
+const initialProductsToShow = 9;
 let allProducts = [];
 
 fetch('https://striveschool-api.herokuapp.com/api/product/', {
