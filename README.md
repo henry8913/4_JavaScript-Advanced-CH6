@@ -5,6 +5,8 @@
 
 **HyperCar Hub** è una semplice demo di piattaforma e-commerce per la visualizzazione e l'acquisto simulato di auto di lusso. Questo progetto è stato creato a scopo didattico per mostrare l'implementazione di funzionalità di base di un e-commerce con tecnologie web.
 
+Per visualizzare la demo del sito live, clicca [QUI](https://henry8913.github.io/4_JavaScript-Advanced-CH6/).
+
 <p align="center">
   <img src="img/cover_a.jpg" alt="Cover" width="100%" />
 </p>
