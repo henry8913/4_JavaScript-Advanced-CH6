@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HyperCar Hub - La tua destinazione per auto di lusso ed esotiche">
+  <meta property="og:title" content="HyperCar Hub - Luxury & Sports Cars">
+  <meta property="og:description" content="Scopri l'Eccellenza nelle Auto di Lusso e Sportive">
+  <meta property="og:image" content="img/cover_a.jpg">
+  <meta property="og:url" content="https://4-java-script-advanced-ch-6.vercel.app/">
+  <title>HyperCar Hub - Luxury & Sports Cars</title>
+  <link rel="canonical" href="https://4-java-script-advanced-ch-6.vercel.app/">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">HyperCar Hub</a>
+      <div class="navbar-mobile-actions">
+        <a class="mobile-cart-link d-lg-none" href="pages/cart.html">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count-mobile" class="cart-count">0</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#featured">In Evidenza</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Chi Siamo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contatti</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="backoffice.html">Back Office</a>
+          </li>
+          <li class="nav-item d-none d-lg-block">
+            <a class="nav-link" href="pages/cart.html">
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cart-count" class="cart-count">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <h1>Benvenuti su HyperCar Hub</h1>
+      <p class="lead">Scopri l'Eccellenza nelle Auto di Lusso e Sportive</p>
+      <a href="#featured" class="btn btn-primary btn-lg mt-4 d-inline-block">Esplora la Collezione</a>
+    </div>
+  </section>
+
+  <!-- Featured Collection -->
+  <section id="featured" class="featured-section">
+    <div class="container my-5">
+      <div class="section-header text-center mb-5">
+        <h2>Collezione in Evidenza</h2>
+        <p class="lead">Esplora la nostra selezione esclusiva di veicoli di lusso</p>
+      </div>
+      <div id="product-list" class="row g-4"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container my-5">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h2>Chi Siamo</h2>
+          <p class="lead">La Tua Meta Premium per Auto di Lusso</p>
+          <p>In HyperCar Hub, ci specializziamo nel portarti le automobili più eccezionali al mondo. La nostra collezione presenta veicoli accuratamente selezionati che rappresentano l'apice dell'ingegneria e del design automobilistico.</p>
+          <div class="stats-container">
+            <div class="stat-item">
+              <i class="fas fa-car"></i>
+              <h3>150+</h3>
+              <p>Auto di Lusso</p>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-users"></i>
+              <h3>1000+</h3>
+              <p>Clienti Soddisfatti</p>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-award"></i>
+              <h3>50+</h3>
+              <p>Riconoscimenti</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&q=80" alt="About Us" class="img-fluid rounded shadow">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services-section">
+    <div class="container my-5">
+      <h2 class="text-center mb-5">I Nostri Servizi</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="service-card">
+            <i class="fas fa-wrench"></i>
+            <h3>Manutenzione Premium</h3>
+            <p>Cura esperta per il tuo veicolo di lusso con attrezzature all'avanguardia e tecnici certificati.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card">
+            <i class="fas fa-handshake"></i>
+            <h3>Servizio Concierge</h3>
+            <p>Assistenza personalizzata per tutte le tue esigenze automobilistiche, disponibile 24/7.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card">
+            <i class="fas fa-certificate"></i>
+            <h3>Autenticazione</h3>
+            <p>Servizi completi di verifica della storia e dell'autenticità del veicolo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery-section">
+    <div class="container my-5">
+      <h2 class="text-center mb-5">La Nostra Galleria</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(0)">
+          <img src="https://www.wsupercars.com/wallpapers-regular/Nissan/2024-Nissan-Frontier-Tarmac-001-1080.jpg" alt="Nissan">
+        </div>
+        <div class="gallery-item" onclick="openLightbox(1)">
+          <img src="https://www.wsupercars.com/wallpapers-regular/Porsche/2023-Porsche-911-GT3-RS-004-1080.jpg" alt="Porsche">
+        </div>
+        <div class="gallery-item" onclick="openLightbox(2)">
+          <img src="https://www.wsupercars.com/wallpapers-regular/BMW/2025-BMW-M3-CS-Touring-009-1080.jpg" alt="BMW">
+        </div>
+        <div class="gallery-item" onclick="openLightbox(3)">
+          <img src="https://www.wsupercars.com/wallpapers-regular/Toyota/2024-Toyota-GR-86-Rally-Legacy-Concept-001-1080.jpg" alt="Toyota">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="booking" class="booking-section">
+    <div class="container my-5">
+      <h2 class="text-center mb-5">Prenota un Test Drive</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form id="bookingForm" class="booking-form">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <input type="text" class="form-control" placeholder="Nome e Cognome" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="email" class="form-control" placeholder="Email" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <input type="tel" class="form-control" placeholder="Telefono" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="date" class="form-control" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <select class="form-control" required>
+                <option value="">Seleziona un'auto</option>
+                <option value="ferrari">Ferrari</option>
+                <option value="lamborghini">Lamborghini</option>
+                <option value="porsche">Porsche</option>
+                <option value="mclaren">McLaren</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="3" placeholder="Note aggiuntive"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Prenota Ora</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="reviews" class="reviews-section">
+    <div class="container my-5">
+      <h2 class="text-center mb-5">Recensioni dei Clienti</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="review-card">
+            <img src="https://www.wsupercars.com/wallpapers-regular/McLaren/2016-McLaren-570S-Coupe-015-1080.jpg" alt="McLaren" class="review-img">
+            <div class="review-content">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Consulenza professionale e servizio post-vendita eccellente per la mia McLaren"</p>
+              <p class="reviewer">- Roberto</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="review-card">
+            <img src="https://www.wsupercars.com/wallpapers-regular/Porsche/2025-Porsche-911-GT3-RS-with-Manthey-Kit-001-1080.jpg" alt="Porsche" class="review-img">
+            <div class="review-content">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Servizio eccezionale! Ho acquistato la mia Porsche dei sogni grazie al team di HyperCar Hub."</p>
+              <p class="reviewer">- Marco</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="review-card">
+            <img src="https://www.wsupercars.com/wallpapers-regular/Aston-Martin/2026-Aston-Martin-Valhalla-005-1080.jpg" alt="Aston Martin" class="review-img">
+            <div class="review-content">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"HyperCar Hub mi ha aiutato a trovare l'Aston Martin perfetta. Assistenza eccezionale!"</p>
+              <p class="reviewer">- Sofia</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="review-card">
+            <img src="https://www.wsupercars.com/wallpapers-regular/Lamborghini/2024-Lamborghini-Revuelto-Opera-Unica-006-1080.jpg" alt="Lamborghini" class="review-img">
+            <div class="review-content">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Professionalità e competenza al top. La mia Lamborghini è sempre in ottime mani."</p>
+              <p class="reviewer">- Laura</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="review-card">
+            <img src="https://www.wsupercars.com/wallpapers-regular/Pagani/2009-Pagani-Zonda-Cinque-Roadster-006-1080.jpg" alt="Pagani" class="review-img">
+            <div class="review-content">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"La mia Pagani è sempre stata curata in modo impeccabile. Servizio di altissimo livello."</p>
+              <p class="reviewer">- Alessandro</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="review-card">
+            <img src="https://www.wsupercars.com/wallpapers-regular/Chevrolet/2014-Chevrolet-Camaro-1LE-001-1080.jpg" alt="Chevrolet" class="review-img">
+            <div class="review-content">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Esperienza d'acquisto impeccabile. Il team mi ha guidato nella scelta perfetta."</p>
+              <p class="reviewer">- Giuseppe</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq-section">
+    <div class="container my-5">
+      <h2 class="text-center mb-5">Domande Frequenti</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Come posso prenotare un test drive?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Puoi prenotare un test drive contattandoci direttamente tramite il nostro form di contatto o chiamando il nostro numero dedicato. Un nostro specialista ti guiderà attraverso il processo.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Quali sono i servizi di manutenzione inclusi?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            I nostri servizi di manutenzione premium includono controlli periodici, tagliandi programmati, assistenza 24/7 e servizio di ritiro e consegna del veicolo.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Offrite servizi di personalizzazione?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Sì, offriamo servizi di personalizzazione completi, dalla verniciatura su misura agli interni in pelle personalizzati, fino alle modifiche prestazionali certificate.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Contattaci</h2>
+          <p class="lead mb-4">Mettiti in contatto con i nostri specialisti di auto di lusso</p>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Lane, Monaco, MC</p>
+            <p><i class="fas fa-phone"></i> +377 123 456 789</p>
+            <p><i class="fas fa-envelope"></i> info@hypercarhub.com</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <form class="contact-form">
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Il Tuo Nome" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="La Tua Email" required>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="4" placeholder="Il Tuo Messaggio" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>HyperCar Hub</h3>
+          <p>La tua destinazione di riferimento per auto di lusso ed esotiche.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Link Rapidi</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#featured">Auto in Evidenza</a></li>
+            <li><a href="#gallery">Galleria</a></li>
+            <li><a href="#booking">Prenotazioni</a></li>
+            <li><a href="#contact">Contatti</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Seguici</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
