@@ -3,7 +3,7 @@
 // API CONFIGURATION
 // ======================================================
 const API_URL = 'https://striveschool-api.herokuapp.com/api/product/';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjZDZiNGU3MDMzNzAwMTUzMTZkY2YiLCJpYXQiOjE3NDA0Mjk5OTYsImV4cCI6MTc0MTYzOTU5Nn0.f38VIVr7I5Aw35DqfQwlKRZvKhY_DCrFGySKGnMWJkg';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Q3MmEzNWQyMGE5ZTAwMTU2MjA4NjEiLCJpYXQiOjE3NDIxNTQyOTQsImV4cCI6MTc0MzM2Mzg5NH0.JPSnCVxkwlBBl69Sgv836R-ZSKq9-3vcAfv-ISJlc7M';
 
 // ======================================================
 // INITIALIZATION
