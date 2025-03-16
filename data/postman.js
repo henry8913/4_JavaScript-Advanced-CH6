@@ -11,7 +11,7 @@ pm.test("Invio di prodotti multipli", function () {
                 header: {
                     "Content-Type": "application/json",
                     Authorization:
-                        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JjZDZiNGU3MDMzNzAwMTUzMTZkY2YiLCJpYXQiOjE3NDA0Mjg5ODAsImV4cCI6MTc0MTYzODU4MH0.LNaQdYGktLh7oHgCc7xoSyJD-kIeh9_Qs8bbTQlBmpg",
+                        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Q3MmEzNWQyMGE5ZTAwMTU2MjA4NjEiLCJpYXQiOjE3NDIxNTQyOTQsImV4cCI6MTc0MzM2Mzg5NH0.JPSnCVxkwlBBl69Sgv836R-ZSKq9-3vcAfv-ISJlc7M",
                 },
                 body: JSON.stringify(prodotto),
             },
