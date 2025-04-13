@@ -23,7 +23,7 @@ const productList = document.getElementById('product-list');
 const initialProductsToShow = 9;
 let allProducts = [];
 
-fetch('${process.env.API_URL}/cars')
+fetch(process.env.API_URL)
   .then(response => response.json())
   .then(products => {
     allProducts = shuffleArray(products);

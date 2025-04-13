@@ -2,7 +2,7 @@
 // ======================================================
 // API CONFIGURATION
 // ======================================================
-const API_URL = '${process.env.API_URL}/cars';
+const API_URL = process.env.API_URL;
 
 // ======================================================
 // INITIALIZATION

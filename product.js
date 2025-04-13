@@ -9,7 +9,7 @@ const productId = params.get('id');
 // ======================================================
 // API DATA FETCH
 // ======================================================
-fetch(`${process.env.API_URL}/cars/${productId}`)
+fetch(`${process.env.API_URL}/${productId}`)
   .then(response => response.json())
   .then(product => {
     productDetail.innerHTML = `
