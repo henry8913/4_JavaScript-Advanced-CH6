@@ -9,11 +9,7 @@ const productId = params.get('id');
 // ======================================================
 // API DATA FETCH
 // ======================================================
-fetch(`https://striveschool-api.herokuapp.com/api/product/${productId}`, {
-  headers: {
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Q3MmEzNWQyMGE5ZTAwMTU2MjA4NjEiLCJpYXQiOjE3NDIxNTQyOTQsImV4cCI6MTc0MzM2Mzg5NH0.JPSnCVxkwlBBl69Sgv836R-ZSKq9-3vcAfv-ISJlc7M'
-  }
-})
+fetch(`${process.env.API_URL}/cars/${productId}`)
   .then(response => response.json())
   .then(product => {
     productDetail.innerHTML = `

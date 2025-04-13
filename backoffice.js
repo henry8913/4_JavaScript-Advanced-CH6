@@ -2,8 +2,7 @@
 // ======================================================
 // API CONFIGURATION
 // ======================================================
-const API_URL = 'https://striveschool-api.herokuapp.com/api/product/';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Q3MmEzNWQyMGE5ZTAwMTU2MjA4NjEiLCJpYXQiOjE3NDIxNTQyOTQsImV4cCI6MTc0MzM2Mzg5NH0.JPSnCVxkwlBBl69Sgv836R-ZSKq9-3vcAfv-ISJlc7M';
+const API_URL = '${process.env.API_URL}/cars';
 
 // ======================================================
 // INITIALIZATION
