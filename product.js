@@ -1,17 +1,33 @@
-
 // ======================================================
 // PRODUCT DETAIL INITIALIZATION
 // ======================================================
 const productDetail = document.getElementById('product-detail');
 const params = new URLSearchParams(window.location.search);
-const productId = params.get('id');
+const productId = parseInt(params.get('id'));
 
-// ======================================================
-// API DATA FETCH
-// ======================================================
-fetch(`${process.env.API_URL}/${productId}`)
-  .then(response => response.json())
+console.log('Product ID:', productId); // Per debugging
+
+if (!productId) {
+  productDetail.innerHTML = `
+    <div class="container text-center py-5">
+      <h2>ID Prodotto non valido</h2>
+      <p>Torna alla home e seleziona un'auto dalla galleria.</p>
+      <a href="index.html" class="btn btn-primary mt-3">Torna alla Home</a>
+    </div>
+  `;
+} else {
+  // ======================================================
+  // API DATA FETCH
+  // ======================================================
+  fetch(`https://api-hypercar-hub.onrender.com/cars/${productId}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Product not found');
+    }
+    return response.json();
+  })
   .then(product => {
+    console.log('Product data:', product); // Per debugging
     productDetail.innerHTML = `
       <div class="container">
         <div class="row flex-column">
@@ -28,7 +44,7 @@ fetch(`${process.env.API_URL}/${productId}`)
               <a href="index.html#gallery" class="btn btn-secondary">
                 <i class="fas fa-arrow-left me-2"></i>Torna alla Galleria
               </a>
-              <button onclick="addToCartFromDetail('${product._id}', '${product.name}', ${product.price}, '${product.brand}', '${product.imageUrl}')" class="btn btn-primary">
+              <button onclick="addToCartFromDetail('${product.id}', '${product.name}', ${product.price}, '${product.brand}', '${product.imageUrl}')" class="btn btn-primary">
                 <i class="fas fa-shopping-cart me-2"></i> Aggiungi al Carrello
               </button>
             </div>
@@ -37,7 +53,17 @@ fetch(`${process.env.API_URL}/${productId}`)
       </div>
     `;
   })
-  .catch(error => console.error('Error fetching product:', error));
+  .catch(error => {
+    console.error('Error fetching product:', error);
+    productDetail.innerHTML = `
+      <div class="container text-center py-5">
+        <h2>Prodotto non trovato</h2>
+        <p>Ci dispiace, il prodotto richiesto non è disponibile.</p>
+        <a href="index.html" class="btn btn-primary mt-3">Torna alla Home</a>
+      </div>
+    `;
+  });
+}
 
 // ======================================================
 // CART MANAGEMENT FUNCTIONS

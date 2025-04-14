@@ -1,15 +1,14 @@
-
 // ======================================================
 // API CONFIGURATION
 // ======================================================
-const API_URL = process.env.API_URL;
+const API_URL = 'https://api-hypercar-hub.onrender.com/cars/';
 
 // ======================================================
 // INITIALIZATION
 // ======================================================
 document.addEventListener('DOMContentLoaded', () => {
   loadProducts();
-  
+
   const updateButton = document.createElement('button');
   updateButton.id = 'updateProductButton';
   updateButton.type = 'button';
@@ -17,19 +16,19 @@ document.addEventListener('DOMContentLoaded', () => {
   updateButton.textContent = 'Aggiorna Prodotto';
   updateButton.disabled = true;
   updateButton.style.display = 'inline-block';
-  
+
   const submitButton = document.querySelector('#productForm button[type="submit"]');
-  
+
   const buttonContainer = document.createElement('div');
   buttonContainer.className = 'd-flex flex-wrap gap-2 mt-3 flex-column flex-md-row';
-  
+
   submitButton.className = submitButton.className + ' w-100';
   updateButton.className = updateButton.className + ' w-100';
-  
+
   submitButton.parentNode.insertBefore(buttonContainer, submitButton);
   buttonContainer.appendChild(submitButton);
   buttonContainer.appendChild(updateButton);
-  
+
   updateButton.onclick = () => {
     showErrorModal('Nessun prodotto selezionato', 'Seleziona prima un prodotto da aggiornare cliccando su "Modifica".');
   };
@@ -77,15 +76,15 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
 // ======================================================
 async function loadProducts() {
   try {
-    const response = await fetch(API_URL, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
     const products = await response.json();
     displayProducts(products);
   } catch (error) {
-    alert('Error loading products: ' + error.message);
+    console.error('Error fetching products:', error);
+    showErrorModal('Errore', 'Errore durante il caricamento dei prodotti');
   }
 }
 
@@ -100,9 +99,10 @@ function displayProducts(products) {
       <div class="product-detail"><span class="label d-md-none">Nome:</span> ${product.name}</div>
       <div class="product-detail"><span class="label d-md-none">Marca:</span> ${product.brand}</div>
       <div class="product-detail"><span class="label d-md-none">Prezzo:</span> €${product.price.toLocaleString()}</div>
+      <div class="product-detail"><span class="label d-md-none">ID:</span> ${product.id}</div>
       <div class="product-actions">
-        <button onclick="editProduct('${product._id}')" class="btn btn-sm btn-warning">Modifica</button>
-        <button onclick="deleteProduct('${product._id}')" class="btn btn-sm btn-danger ms-2">Elimina</button>
+        <button onclick="editProduct(${product.id})" class="btn btn-sm btn-warning">Modifica</button>
+        <button onclick="deleteProduct(${product.id})" class="btn btn-sm btn-danger ms-2">Elimina</button>
       </div>
     `;
     tbody.appendChild(row);
@@ -118,7 +118,7 @@ async function deleteProduct(id) {
       const response = await fetch(`${API_URL}${id}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Content-Type': 'application/json'
         }
       });
 
@@ -140,8 +140,9 @@ async function deleteProduct(id) {
 async function editProduct(id) {
   try {
     const response = await fetch(`${API_URL}${id}`, {
+      method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Content-Type': 'application/json'
       }
     });
     const product = await response.json();
@@ -158,7 +159,7 @@ async function editProduct(id) {
     document.getElementById('price').value = product.price;
 
     let updateButton = document.getElementById('updateProductButton');
-    
+
     if (!updateButton) {
       updateButton = document.createElement('button');
       updateButton.id = 'updateProductButton';
@@ -169,7 +170,7 @@ async function editProduct(id) {
       const submitButton = document.querySelector('#productForm button[type="submit"]');
       submitButton.parentNode.insertBefore(updateButton, submitButton);
     }
-    
+
     document.querySelector('#productForm button[type="submit"]').textContent = 'Aggiungi Prodotto';
 
     updateButton.disabled = false;
@@ -186,8 +187,7 @@ async function editProduct(id) {
         const response = await fetch(`${API_URL}${id}`, {
           method: 'PUT',
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(updatedData)
         });

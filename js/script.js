@@ -1,4 +1,3 @@
-
 // ======================================================
 // NAVIGATION & INITIALIZATION
 // ======================================================
@@ -23,14 +22,14 @@ const productList = document.getElementById('product-list');
 const initialProductsToShow = 9;
 let allProducts = [];
 
-fetch(process.env.API_URL)
+fetch('https://api-hypercar-hub.onrender.com/cars')
   .then(response => response.json())
   .then(products => {
     allProducts = shuffleArray(products);
-    
+
     const initialProducts = allProducts.slice(0, initialProductsToShow);
     displayProducts(initialProducts);
-    
+
     if (allProducts.length > initialProductsToShow) {
       addShowMoreButton();
     }
@@ -49,8 +48,8 @@ function displayProducts(products) {
           <p class="text-muted">${product.brand}</p>
           <p class="car-price">€${product.price.toLocaleString()}</p>
           <div class="car-card-actions">
-            <a href="product.html?id=${product._id}" class="btn btn-outline-primary">Dettagli</a>
-            <button onclick="addToCart('${product._id}', '${product.name}', ${product.price}, '${product.brand}', '${product.imageUrl}')" class="btn btn-primary">
+            <a href="product.html?id=${product.id}" class="btn btn-outline-primary">Dettagli</a>
+            <button onclick="addToCart('${product.id}', '${product.name}', ${product.price}, '${product.brand}', '${product.imageUrl}')" class="btn btn-primary">
               <i class="fas fa-shopping-cart"></i> Aggiungi
             </button>
           </div>
@@ -63,23 +62,23 @@ function displayProducts(products) {
 
 function addShowMoreButton() {
   const container = document.querySelector('.featured-section .container');
-  
+
   const buttonContainer = document.createElement('div');
   buttonContainer.className = 'text-center mt-4';
   buttonContainer.id = 'show-more-container';
-  
+
   const showMoreButton = document.createElement('button');
   showMoreButton.className = 'btn btn-primary';
   showMoreButton.textContent = 'Carica altri veicoli';
   showMoreButton.id = 'show-more-button';
-  
+
   showMoreButton.addEventListener('click', () => {
     buttonContainer.remove();
-    
+
     const remainingProducts = allProducts.slice(initialProductsToShow);
     displayProducts(remainingProducts);
   });
-  
+
   buttonContainer.appendChild(showMoreButton);
   container.appendChild(buttonContainer);
 }
