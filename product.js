@@ -1,33 +1,17 @@
+
 // ======================================================
 // PRODUCT DETAIL INITIALIZATION
 // ======================================================
 const productDetail = document.getElementById('product-detail');
 const params = new URLSearchParams(window.location.search);
-const productId = parseInt(params.get('id'));
+const productId = params.get('id');
 
-console.log('Product ID:', productId); // Per debugging
-
-if (!productId) {
-  productDetail.innerHTML = `
-    <div class="container text-center py-5">
-      <h2>ID Prodotto non valido</h2>
-      <p>Torna alla home e seleziona un'auto dalla galleria.</p>
-      <a href="index.html" class="btn btn-primary mt-3">Torna alla Home</a>
-    </div>
-  `;
-} else {
-  // ======================================================
-  // API DATA FETCH
-  // ======================================================
-  fetch(`https://api-hypercar-hub.onrender.com/cars/${productId}`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Product not found');
-    }
-    return response.json();
-  })
+// ======================================================
+// API DATA FETCH
+// ======================================================
+fetch(`https://api-hyper-car-hub-henry8913.replit.app/cars/${productId}`)
+  .then(response => response.json())
   .then(product => {
-    console.log('Product data:', product); // Per debugging
     productDetail.innerHTML = `
       <div class="container">
         <div class="row flex-column">
@@ -53,17 +37,7 @@ if (!productId) {
       </div>
     `;
   })
-  .catch(error => {
-    console.error('Error fetching product:', error);
-    productDetail.innerHTML = `
-      <div class="container text-center py-5">
-        <h2>Prodotto non trovato</h2>
-        <p>Ci dispiace, il prodotto richiesto non è disponibile.</p>
-        <a href="index.html" class="btn btn-primary mt-3">Torna alla Home</a>
-      </div>
-    `;
-  });
-}
+  .catch(error => console.error('Error fetching product:', error));
 
 // ======================================================
 // CART MANAGEMENT FUNCTIONS

@@ -1,3 +1,4 @@
+
 // ======================================================
 // NAVIGATION & INITIALIZATION
 // ======================================================
@@ -22,14 +23,14 @@ const productList = document.getElementById('product-list');
 const initialProductsToShow = 9;
 let allProducts = [];
 
-fetch('https://api-hypercar-hub.onrender.com/cars')
+fetch('https://api-hyper-car-hub-henry8913.replit.app/cars/')
   .then(response => response.json())
   .then(products => {
     allProducts = shuffleArray(products);
-
+    
     const initialProducts = allProducts.slice(0, initialProductsToShow);
     displayProducts(initialProducts);
-
+    
     if (allProducts.length > initialProductsToShow) {
       addShowMoreButton();
     }
@@ -62,23 +63,23 @@ function displayProducts(products) {
 
 function addShowMoreButton() {
   const container = document.querySelector('.featured-section .container');
-
+  
   const buttonContainer = document.createElement('div');
   buttonContainer.className = 'text-center mt-4';
   buttonContainer.id = 'show-more-container';
-
+  
   const showMoreButton = document.createElement('button');
   showMoreButton.className = 'btn btn-primary';
   showMoreButton.textContent = 'Carica altri veicoli';
   showMoreButton.id = 'show-more-button';
-
+  
   showMoreButton.addEventListener('click', () => {
     buttonContainer.remove();
-
+    
     const remainingProducts = allProducts.slice(initialProductsToShow);
     displayProducts(remainingProducts);
   });
-
+  
   buttonContainer.appendChild(showMoreButton);
   container.appendChild(buttonContainer);
 }

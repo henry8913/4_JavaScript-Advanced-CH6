@@ -1,7 +1,8 @@
+
 // ======================================================
 // API CONFIGURATION
 // ======================================================
-const API_URL = 'https://api-hypercar-hub.onrender.com/cars/';
+const API_URL = 'https://api-hyper-car-hub-henry8913.replit.app/cars/';
 
 // ======================================================
 // INITIALIZATION
@@ -52,8 +53,7 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(productData)
     });
@@ -76,15 +76,14 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
 // ======================================================
 async function loadProducts() {
   try {
-    const response = await fetch(API_URL);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
+    const response = await fetch(API_URL, {
+      headers: {        
+      }
+    });
     const products = await response.json();
     displayProducts(products);
   } catch (error) {
-    console.error('Error fetching products:', error);
-    showErrorModal('Errore', 'Errore durante il caricamento dei prodotti');
+    alert('Error loading products: ' + error.message);
   }
 }
 
@@ -99,10 +98,9 @@ function displayProducts(products) {
       <div class="product-detail"><span class="label d-md-none">Nome:</span> ${product.name}</div>
       <div class="product-detail"><span class="label d-md-none">Marca:</span> ${product.brand}</div>
       <div class="product-detail"><span class="label d-md-none">Prezzo:</span> €${product.price.toLocaleString()}</div>
-      <div class="product-detail"><span class="label d-md-none">ID:</span> ${product.id}</div>
       <div class="product-actions">
-        <button onclick="editProduct(${product.id})" class="btn btn-sm btn-warning">Modifica</button>
-        <button onclick="deleteProduct(${product.id})" class="btn btn-sm btn-danger ms-2">Elimina</button>
+        <button onclick="editProduct('${product.id}')" class="btn btn-sm btn-warning">Modifica</button>
+        <button onclick="deleteProduct('${product.id}')" class="btn btn-sm btn-danger ms-2">Elimina</button>
       </div>
     `;
     tbody.appendChild(row);
@@ -126,7 +124,8 @@ async function deleteProduct(id) {
         showSuccessModal('Prodotto eliminato', 'Il prodotto è stato eliminato con successo!');
         loadProducts();
       } else {
-        showErrorModal('Errore', 'Si è verificato un errore durante l\'eliminazione del prodotto.');
+        const error = await response.json();
+        showErrorModal('Errore', `${error.message || 'Si è verificato un errore durante l\'eliminazione del prodotto.'}`);
       }
     } catch (error) {
       showErrorModal('Errore', 'Errore durante l\'eliminazione del prodotto: ' + error.message);
@@ -139,11 +138,7 @@ async function deleteProduct(id) {
 // ======================================================
 async function editProduct(id) {
   try {
-    const response = await fetch(`${API_URL}${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    const response = await fetch(`${API_URL}${id}`, {      
     });
     const product = await response.json();
 
@@ -187,7 +182,8 @@ async function editProduct(id) {
         const response = await fetch(`${API_URL}${id}`, {
           method: 'PUT',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           },
           body: JSON.stringify(updatedData)
         });
@@ -230,8 +226,7 @@ async function editProduct(id) {
         const response = await fetch(API_URL, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(productData)
         });
